@@ -95,6 +95,7 @@ ui/       # HUD, menus, inventory, dialogue
 - Current sprint: `prj-mgmt/sprints/sprint-1.md`
 - Style Guide: `STYLEGUIDE.md`
 - Branching Strategy: `dev-ops/branching-strategy.md`
+- Cursor Rules: `.dev-ops/.cursorrules`
 
 ## Linking Tasks to Commits
 
@@ -102,6 +103,7 @@ ui/       # HUD, menus, inventory, dialogue
   - Branch: `feature/<area>/<slug>-<GUID>`
   - Commit footer: add `task: <GUID>`
   - PR description: include `task: <GUID>` and a link to the task doc
+  - When a task is marked Done: rename the task file to `done-<slug>-<GUID>.md` (see `dev-ops/.cursorrules`)
 
 ## Troubleshooting
 

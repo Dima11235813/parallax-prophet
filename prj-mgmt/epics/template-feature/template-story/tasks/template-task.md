@@ -24,6 +24,10 @@ Branch: feature/<short-slug>-<GUID>
 - Branch naming: `feature/<area-or-scope>/<short-slug>-<GUID>` (examples in `dev-ops/branching-strategy.md`).
 - Commit footer: add `task: <GUID>` to connect commits to this task. Add multiple `task:` lines if needed.
 
+## Lifecycle
+
+- When status changes to `Done`, rename the file to `done-<short-slug>-<GUID>.md` (see `dev-ops/.cursorrules`).
+
 ## Links
 
 - PRs, issues, designs, specs

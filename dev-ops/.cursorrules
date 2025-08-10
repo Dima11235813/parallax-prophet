@@ -1,0 +1,38 @@
+# Cursor Rules
+
+These conventions keep work organized and make it easy to trace commits to tasks.
+
+## Task GUID
+
+- Every task file in `prj-mgmt/` must have a `GUID` (UUID v4).
+- Reuse this GUID in branch names, commit footers, and PRs.
+
+## Branch Naming
+
+- Use the task GUID in feature branches:
+  - `feature/<area-or-scope>/<short-slug>-<GUID>`
+  - Example: `feature/camera/reticle-ready-6f2a5d9b-9c24-4d67-8b7e-2a5fcd1ab4e3`
+
+## Commit Messages
+
+- Conventional commits style.
+- Add a footer with the task GUID:
+  - `task: <GUID>`
+
+## PR Description
+
+- Include `task: <GUID>` and a link to the task file in `prj-mgmt/`.
+
+## Task File Renaming on Done
+
+- When a task status becomes `Done`, rename the task file to include a `done-` prefix and the GUID, keeping the original slug:
+  - From: `tasks/<slug>.md`
+  - To: `tasks/done-<slug>-<GUID>.md`
+  - Example:
+    - From: `tasks/add-baseline-packages.md`
+    - To: `tasks/done-add-baseline-packages-6f2a5d9b-9c24-4d67-8b7e-2a5fcd1ab4e3.md`
+
+## References
+
+- Style Guide: `STYLEGUIDE.md`
+- Branching Strategy: `dev-ops/branching-strategy.md`

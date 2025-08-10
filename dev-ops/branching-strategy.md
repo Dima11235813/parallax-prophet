@@ -57,3 +57,4 @@ GUIDs come from the task documents in `prj-mgmt/`.
   - Windows PowerShell: `[guid]::NewGuid()`
 
 Store the GUID in the task doc and reuse it across branch names, commit footers, and PRs.
+See also: `dev-ops/cursor-rules.md` for file rename conventions when tasks are Done.
