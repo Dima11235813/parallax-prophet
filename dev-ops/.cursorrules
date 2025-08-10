@@ -63,8 +63,9 @@ These conventions keep work organized and make it easy to trace commits to tasks
 
 ## Test Path Conventions
 
-- Unit tests: `src/**/*.test.ts` or `src/**/*.spec.ts` and/or `tests/unit/**/*.{test,spec}.ts`
-- Integration tests: `tests/integration/**/*.{test,spec}.ts`
+- Prefer colocated tests next to the file under test using `*.test.ts` or `*.spec.ts` (e.g., `src/domain/helpers/markers.ts` and `src/domain/helpers/markers.test.ts`).
+- Unit tests: colocated in `src/**/?(*.){test,spec}.ts`.
+- Integration tests: either colocated or under `tests/integration/**/*.{test,spec}.ts`.
 - End-to-end tests: Playwright in `e2e/` (configured via `playwright.config.ts`).
 
 ## References

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { createOriginMarker, createSocketMarkers, allMarkers } from '../domain/helpers/markers'
+import { createOriginMarker, createSocketMarkers, allMarkers } from './markers'
 
 describe('markers helpers', () => {
   it('creates an origin marker at (0,0,0)', () => {
