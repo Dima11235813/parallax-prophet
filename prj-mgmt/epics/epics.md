@@ -13,11 +13,12 @@ Conventions
 
 ## List of Epics by Order Of Importance
 
-- [01 Camera & Perspective System](epics/01-camera-and-perspective/epic.md)
-- [02 Dimension Toggle System](epics/02-dimension-toggle/epic.md)
-- [03 Engine/ECS & Project Skeleton](epics/03-engine-ecs-skeleton/epic.md)
-- [04 UI/HUD & Controls](epics/04-ui-hud-controls/epic.md)
-- [05 Save/Load & Settings](epics/05-save-load/epic.md)
-- [06 RPG Core (MVP)](epics/06-rpg-core/epic.md)
-- [07 Vertical Slice Content](epics/07-vertical-slice/epic.md)
-- [08 Performance & QA](epics/08-performance-qa/epic.md)
+- [00 Init Repo & Developer Experience](./00-init-repo/epic.md)
+- [01 Camera & Perspective System](./01-camera-and-perspective/epic.md)
+ - [02 Dimension Toggle System](./02-dimension-toggle/epic.md)
+ - [03 Engine/ECS & Project Skeleton](./03-engine-ecs-skeleton/epic.md)
+ - [04 UI/HUD & Controls](./04-ui-hud-controls/epic.md)
+ - [05 Save/Load & Settings](./05-save-load/epic.md)
+ - [06 RPG Core (MVP)](./06-rpg-core/epic.md)
+ - [07 Vertical Slice Content](./07-vertical-slice/epic.md)
+ - [08 Performance & QA](./08-performance-qa/epic.md)
