@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { createLabelCanvas } from '../canvas/labels'
-import type { MarkerEntity } from '../../domain/entities/Marker'
-import type { RoomEntity } from '../../domain/entities/Room'
+import type { MarkerEntity } from '@domain/entities/Marker'
+import type { RoomEntity } from '@domain/entities/Room'
 
 export function addMarker(scene: THREE.Scene, marker: MarkerEntity): void {
   const sphere = new THREE.Mesh(

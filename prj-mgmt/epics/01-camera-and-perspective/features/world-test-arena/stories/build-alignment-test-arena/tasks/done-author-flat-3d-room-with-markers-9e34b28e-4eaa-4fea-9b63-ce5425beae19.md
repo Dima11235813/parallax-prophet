@@ -2,7 +2,7 @@
 
 ```yaml
 Date: 2025-08-10
-Status: Todo
+Status: Done
 Assignee: TBD
 Related Story: ../story.md
 Estimate: TBD
@@ -18,9 +18,9 @@ Branch: feature/world/test-arena-room-9e34b28e-4eaa-4fea-9b63-ce5425beae19
 
 ## Checklist
 
-- [ ] Ground and walls added
-- [ ] Markers placed and labeled
-- [ ] Scene load entry configured
+- [x] Ground and walls added
+- [x] Markers placed and labeled
+- [x] Scene load entry configured
 
 ## Git Linking
 
