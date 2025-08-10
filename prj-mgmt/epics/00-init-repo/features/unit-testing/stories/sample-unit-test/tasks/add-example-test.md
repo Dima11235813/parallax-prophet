@@ -8,11 +8,14 @@ Estimate: TBD
 Priority: P3
 
 ## Description
+
 - Create a trivial test to prove the harness.
 
 ## Checklist
+
 - [ ] Add example.spec.ts
 - [ ] Ensure included in test run
 
 ## Success Criteria
+
 - Example test passes.

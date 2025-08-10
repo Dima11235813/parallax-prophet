@@ -8,12 +8,15 @@ Estimate: TBD
 Priority: P2
 
 ## Description
+
 - Add Husky hooks and lint-staged to run lint/format on staged files.
 
 ## Checklist
+
 - [ ] Install and enable Husky
 - [ ] Configure lint-staged
 - [ ] Pre-commit runs checks
 
 ## Success Criteria
+
 - Bad files are blocked on commit.

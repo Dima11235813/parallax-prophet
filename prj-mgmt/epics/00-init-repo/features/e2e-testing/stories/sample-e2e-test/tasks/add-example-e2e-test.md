@@ -8,11 +8,14 @@ Estimate: TBD
 Priority: P3
 
 ## Description
+
 - Create a trivial Playwright test to prove the harness.
 
 ## Checklist
+
 - [ ] Example.spec.ts
 - [ ] Script runs in headless mode
 
 ## Success Criteria
+
 - Example e2e passes.

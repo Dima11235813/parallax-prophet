@@ -8,12 +8,15 @@ Estimate: TBD
 Priority: P2
 
 ## Description
+
 - Add Commitlint with conventional config and a commit-msg hook.
 
 ## Checklist
+
 - [ ] Install commitlint packages
 - [ ] Add config file
 - [ ] Hook rejects invalid messages
 
 ## Success Criteria
+
 - Invalid messages are rejected with helpful output.

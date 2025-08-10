@@ -8,12 +8,15 @@ Estimate: TBD
 Priority: P2
 
 ## Description
+
 - Enable strict TS flags in tsconfig.json.
 
 ## Checklist
+
 - [ ] strict: true
 - [ ] noImplicitAny, strictNullChecks, noUncheckedIndexedAccess
 - [ ] Clean compile
 
 ## Success Criteria
+
 - Build passes with strict flags enabled.

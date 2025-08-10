@@ -8,21 +8,25 @@ Assignee: TBD
 Related Story/Feature: link
 
 ## Summary
+
 One-sentence description of the issue.
 
 ## Steps to Reproduce
-1. 
-2. 
-3. 
+
+1.
+2.
+3.
 
 ## Expected Behavior
 
 ## Actual Behavior
 
 ## Evidence
+
 - Screenshots, videos, logs, console output
 
 ## Workaround (if any)
 
 ## Links
+
 - Related issues/PRs

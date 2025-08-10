@@ -1,13 +1,15 @@
-# Download Single File 
+# Download Single File
 
 ## PDF from git repo
 
 ### All text files
+
 ```
 find . -type f -exec cat {} \; > all_content.txt
 ```
 
 ### Specific files
+
 ```
 find . -name "*.py" -type f -exec cat {} \; > all-py-content.txt
 find . -name "*.ts" -type f -exec cat {} \; > all-ts-content.txt
