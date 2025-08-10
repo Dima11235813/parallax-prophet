@@ -41,6 +41,8 @@ Status: Planned
 
 - [Alignment View & Reticle](./features/alignment-view-reticle/feature.md)
 - [Scale Transfer & Tiers](./features/scale-transfer-tiers/feature.md)
+- [Test Arena & World Baseline](./features/world-test-arena/feature.md)
+- [Player Pawn & Controller](./features/player-pawn-controller/feature.md)
 
 ## Milestones / Timeline
 
