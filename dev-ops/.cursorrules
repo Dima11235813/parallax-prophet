@@ -49,6 +49,24 @@ These conventions keep work organized and make it easy to trace commits to tasks
 - New logic should prefer pure functions in domain; pass data in, return data out. Avoid singletons and shared mutable state.
 - Unit tests must target domain helpers and entities first; integration tests cover infra and wiring.
 
+## Path Aliases
+
+- Use TypeScript and Vite path aliases to keep imports concise and stable (see `dev-ops/arch.md`, Section 23):
+  - `@/*` -> `src/*`
+  - `@engine/*` -> `src/engine/*`
+  - `@game/*` -> `src/game/*`
+  - `@app/*` -> `src/app/*`
+  - `@shared/*` -> `src/shared/*`
+  - `@domain/*` -> `src/domain/*`
+  - `@infra/*` -> `src/infra/*`
+- Configured in `tsconfig.json` (`compilerOptions.paths`) and `vite.config.ts` (`resolve.alias`).
+
+## Test Path Conventions
+
+- Unit tests: `src/**/*.test.ts` or `src/**/*.spec.ts` and/or `tests/unit/**/*.{test,spec}.ts`
+- Integration tests: `tests/integration/**/*.{test,spec}.ts`
+- End-to-end tests: Playwright in `e2e/` (configured via `playwright.config.ts`).
+
 ## References
 
 - Style Guide: `STYLEGUIDE.md`
