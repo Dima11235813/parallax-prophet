@@ -1,48 +1,7 @@
 import * as THREE from 'three'
-
-function createLabelCanvas(text: string): HTMLCanvasElement {
-  const canvas = document.createElement('canvas')
-  const context = canvas.getContext('2d') as CanvasRenderingContext2D
-  const font = 24
-  context.font = `${font}px sans-serif`
-  const metrics = context.measureText(text)
-  const textWidth = metrics.width
-  canvas.width = Math.ceil(textWidth + 16)
-  canvas.height = Math.ceil(font + 16)
-  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-  ctx.font = `${font}px sans-serif`
-  ctx.fillStyle = '#000000'
-  ctx.globalAlpha = 0.6
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
-  ctx.globalAlpha = 1
-  ctx.fillStyle = '#ffffff'
-  ctx.textBaseline = 'top'
-  ctx.fillText(text, 8, 8)
-  return canvas
-}
-
-function addMarker(
-  scene: THREE.Scene,
-  position: THREE.Vector3,
-  label: string,
-  color: number
-): void {
-  const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(0.1, 16, 16),
-    new THREE.MeshBasicMaterial({ color })
-  )
-  sphere.position.copy(position)
-  scene.add(sphere)
-
-  const labelCanvas = createLabelCanvas(label)
-  const texture = new THREE.CanvasTexture(labelCanvas)
-  const material = new THREE.SpriteMaterial({ map: texture, transparent: true })
-  const sprite = new THREE.Sprite(material)
-  sprite.position.copy(position.clone().add(new THREE.Vector3(0, 0.25, 0)))
-  const scale = 0.005
-  sprite.scale.set(labelCanvas.width * scale, labelCanvas.height * scale, 1)
-  scene.add(sprite)
-}
+import { createDefaultRoom } from './domain/entities/Room'
+import { allMarkers } from './domain/helpers/markers'
+import { addMarker, addRoom } from './infra/three/sceneBuilders'
 
 function bootTestArena(root: HTMLElement): void {
   const scene = new THREE.Scene()
@@ -65,39 +24,13 @@ function bootTestArena(root: HTMLElement): void {
   dir.position.set(3, 5, 2)
   scene.add(dir)
 
-  // Ground
-  const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(6, 6),
-    new THREE.MeshStandardMaterial({ color: 0x2e7d32, roughness: 1.0 })
-  )
-  ground.rotation.x = -Math.PI / 2
-  ground.receiveShadow = true
-  scene.add(ground)
-
-  // Walls (simple planes)
-  const wallMaterial = new THREE.MeshStandardMaterial({ color: 0x455a64, roughness: 1.0 })
-  const wallGeom = new THREE.PlaneGeometry(6, 2.5)
-  const north = new THREE.Mesh(wallGeom, wallMaterial)
-  north.position.set(0, 1.25, -3)
-  scene.add(north)
-  const south = new THREE.Mesh(wallGeom, wallMaterial)
-  south.rotation.y = Math.PI
-  south.position.set(0, 1.25, 3)
-  scene.add(south)
-  const east = new THREE.Mesh(wallGeom, wallMaterial)
-  east.rotation.y = -Math.PI / 2
-  east.position.set(3, 1.25, 0)
-  scene.add(east)
-  const west = new THREE.Mesh(wallGeom, wallMaterial)
-  west.rotation.y = Math.PI / 2
-  west.position.set(-3, 1.25, 0)
-  scene.add(west)
+  // Domain-driven construction of room and markers
+  addRoom(scene, createDefaultRoom())
 
   // Origin marker and three socket markers
-  addMarker(scene, new THREE.Vector3(0, 0, 0), 'origin', 0xffee58)
-  addMarker(scene, new THREE.Vector3(1.5, 0, 1.5), 'socket A', 0x29b6f6)
-  addMarker(scene, new THREE.Vector3(-1.5, 0, 1.0), 'socket B', 0xab47bc)
-  addMarker(scene, new THREE.Vector3(0.5, 0, -1.2), 'socket C', 0xef5350)
+  for (const m of allMarkers()) {
+    addMarker(scene, m)
+  }
 
   // Basic orbit via mouse (minimal custom)
   let isDragging = false

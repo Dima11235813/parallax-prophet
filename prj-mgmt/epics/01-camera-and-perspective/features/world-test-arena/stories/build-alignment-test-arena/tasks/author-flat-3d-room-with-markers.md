@@ -1,5 +1,6 @@
 # Author flat 3D room with markers
 
+```yaml
 Date: 2025-08-10
 Status: Todo
 Assignee: TBD
@@ -8,6 +9,7 @@ Estimate: TBD
 Priority: P2
 GUID: 9e34b28e-4eaa-4fea-9b63-ce5425beae19
 Branch: feature/world/test-arena-room-9e34b28e-4eaa-4fea-9b63-ce5425beae19
+```
 
 ## Description
 

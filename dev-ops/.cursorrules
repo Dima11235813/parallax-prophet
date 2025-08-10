@@ -38,6 +38,17 @@ These conventions keep work organized and make it easy to trace commits to tasks
     - From: `tasks/add-baseline-packages.md`
     - To: `tasks/done-add-baseline-packages-6f2a5d9b-9c24-4d67-8b7e-2a5fcd1ab4e3.md`
 
+## Architecture (Domain-Driven)
+
+- Maintain a `src/domain/` folder for core domain logic. This code is framework-agnostic and testable.
+  - `src/domain/entities/`: entity types and data shapes only. No side effects.
+  - `src/domain/helpers/`: pure functions operating on entities. No I/O, no timers, no DOM, no rendering.
+- Infrastructure and adapters live outside the domain, e.g., `src/infra/` for rendering, persistence, IO, etc.
+  - Keep rendering-specific Three.js code under `src/infra/three/`.
+- UI / app shell (`src/main.ts`, components) orchestrates domain and infra. It contains wiring, not business rules.
+- New logic should prefer pure functions in domain; pass data in, return data out. Avoid singletons and shared mutable state.
+- Unit tests must target domain helpers and entities first; integration tests cover infra and wiring.
+
 ## References
 
 - Style Guide: `STYLEGUIDE.md`

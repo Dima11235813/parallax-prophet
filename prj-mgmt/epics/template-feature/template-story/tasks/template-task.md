@@ -1,5 +1,6 @@
 # Template Task
 
+```yaml
 Date: YYYY-MM-DD
 Status: Todo | In Progress | Blocked | In Review | Done
 Assignee: TBD
@@ -8,6 +9,7 @@ Estimate: TBD
 Priority: P1 | P2 | P3
 GUID: TBD
 Branch: feature/<short-slug>-<GUID>
+```
 
 ## Description
 
