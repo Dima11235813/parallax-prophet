@@ -49,6 +49,20 @@ These conventions keep work organized and make it easy to trace commits to tasks
 - New logic should prefer pure functions in domain; pass data in, return data out. Avoid singletons and shared mutable state.
 - Unit tests must target domain helpers and entities first; integration tests cover infra and wiring.
 
+### CRITICAL: HUD and View-Model Rules
+
+- Treat the HUD as a domain-level concept as complexity grows.
+  - Define HUD state and view-model interfaces under `src/domain/entities/` (types only; no side effects).
+  - Implement pure view-model builders under `src/domain/helpers/` that map domain state to a HUD view model (no DOM, no Three.js, no timers, no I/O).
+  - The UI/app shell receives a `HudViewModel` and renders it. It should not compute HUD logic.
+- Keep `src/main.ts` lean and orchestration-only:
+  - After completing tasks, refactor to extract reusable logic into helpers or appropriate layers (domain for pure logic; infra for rendering/IO; app for composition).
+  - Avoid letting `src/main.ts` grow large; prefer small, named functions and modules.
+- Decouple domain logic and UI via an explicit view-model boundary:
+  - Domain exposes data and pure builders (e.g., `buildHudViewModel(domainState): HudViewModel`).
+  - UI consumes the view model and handles presentation only.
+  - No DOM/renderer references inside domain code.
+
 ## Path Aliases
 
 - Use TypeScript and Vite path aliases to keep imports concise and stable (see `dev-ops/arch.md`, Section 23):

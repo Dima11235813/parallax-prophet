@@ -14,9 +14,13 @@ As a designer/engineer, I want to rapidly switch and validate camera modes insid
 
 ## Acceptance Criteria (Gherkin-style)
 
-- Given the app boots to the Test Arena, when I press the camera toggle input, then the camera switches between available modes and the view updates accordingly.
-- Given the camera is in a mode, when I restart the scene, then the default mode is restored.
-- Given QA uses the readme hints, when they follow the steps, then they can verify mode switching and baseline behavior.
+- Given the app boots to the Test Arena in a dev build, when the scene loads, then a HUD overlay is visible in the top-left of `#app`.
+- Given the HUD is visible, then it shows the current camera mode as text in the form `Mode: <mode>`.
+- Given the HUD is visible and the camera is in orbit mode, then it displays orbit readouts in the form `orbit: az=<number> el=<number> r=<number>` with values updating in real time as the camera is manipulated.
+- Given the camera is in orbit mode, when I drag with the mouse or use the mouse wheel, then the orbit values in the HUD update immediately and the view changes accordingly.
+- Given the HUD shows a control labeled `Toggle Camera (C)`, when I click the button or press the `C` key, then the camera toggles between `orbit` and `free`, and the HUD `Mode:` label updates to reflect the new mode.
+- Given the camera is in any mode, when I restart the scene, then the default mode `orbit` is restored.
+- Given QA follows the on-screen hint (`Toggle Camera (C)`), when they use the control, then they can validate mode switching without consulting external docs.
 
 ## Estimation
 

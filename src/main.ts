@@ -8,6 +8,7 @@ import {
   updateOrbitFromDrag,
   updateOrbitFromWheel,
 } from '@domain/helpers/cameraModeManager'
+import { getCurrentMode, toggleMode } from '@domain/helpers/cameraModeManager'
 
 function bootTestArena(root: HTMLElement): void {
   const scene = new THREE.Scene()
@@ -26,6 +27,36 @@ function bootTestArena(root: HTMLElement): void {
   renderer.setSize(root.clientWidth, root.clientHeight)
   root.innerHTML = ''
   root.appendChild(renderer.domElement)
+
+  // HUD overlay for mode and orbit values (dev aid)
+  const hud = document.createElement('div')
+  hud.style.position = 'fixed'
+  hud.style.top = '12px'
+  hud.style.left = '12px'
+  hud.style.background = 'rgba(0,0,0,0.55)'
+  hud.style.color = '#fff'
+  hud.style.fontFamily =
+    'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+  hud.style.fontSize = '12px'
+  hud.style.padding = '8px 10px'
+  hud.style.borderRadius = '6px'
+  hud.style.zIndex = '1000'
+  hud.style.pointerEvents = 'auto'
+
+  const modeEl = document.createElement('div')
+  const valuesEl = document.createElement('div')
+  const controlsEl = document.createElement('div')
+
+  const toggleBtn = document.createElement('button')
+  toggleBtn.textContent = 'Toggle Camera (C)'
+  toggleBtn.style.marginTop = '6px'
+  toggleBtn.style.cursor = 'pointer'
+  controlsEl.appendChild(toggleBtn)
+
+  hud.appendChild(modeEl)
+  hud.appendChild(valuesEl)
+  hud.appendChild(controlsEl)
+  root.appendChild(hud)
 
   // Lights
   const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 0.8)
@@ -51,7 +82,14 @@ function bootTestArena(root: HTMLElement): void {
   function updateCamera(): void {
     applyCameraFromState()
   }
+  function updateHud(): void {
+    const mode = getCurrentMode(cameraState)
+    modeEl.textContent = `Mode: ${mode}`
+    const { azimuth, elevation, radius } = cameraState.orbit
+    valuesEl.textContent = `orbit: az=${azimuth.toFixed(2)} el=${elevation.toFixed(2)} r=${radius.toFixed(2)}`
+  }
   updateCamera()
+  updateHud()
 
   renderer.domElement.addEventListener('mousedown', (e: MouseEvent) => {
     isDragging = true
@@ -75,6 +113,21 @@ function bootTestArena(root: HTMLElement): void {
   window.addEventListener('wheel', (e: WheelEvent) => {
     cameraState = updateOrbitFromWheel(cameraState, e.deltaY)
     updateCamera()
+    updateHud()
+  })
+
+  // Toggle camera mode via button and keyboard
+  function toggleCameraMode(): void {
+    cameraState = toggleMode(cameraState)
+    updateCamera()
+    updateHud()
+  }
+  toggleBtn.addEventListener('click', toggleCameraMode)
+  window.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.code === 'KeyC') {
+      e.preventDefault()
+      toggleCameraMode()
+    }
   })
 
   function onResize(): void {
