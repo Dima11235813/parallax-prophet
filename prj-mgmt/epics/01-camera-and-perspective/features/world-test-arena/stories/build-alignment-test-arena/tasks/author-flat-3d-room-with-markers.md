@@ -1,13 +1,13 @@
 # Author flat 3D room with markers
 
-Date: YYYY-MM-DD
+Date: 2025-08-10
 Status: Todo
 Assignee: TBD
 Related Story: ../story.md
 Estimate: TBD
 Priority: P2
-GUID: TBD
-Branch: feature/world/test-arena-room-<GUID>
+GUID: 9e34b28e-4eaa-4fea-9b63-ce5425beae19
+Branch: feature/world/test-arena-room-9e34b28e-4eaa-4fea-9b63-ce5425beae19
 
 ## Description
 

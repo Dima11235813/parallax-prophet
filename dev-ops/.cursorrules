@@ -19,6 +19,12 @@ These conventions keep work organized and make it easy to trace commits to tasks
 - Add a footer with the task GUID:
   - `task: <GUID>`
 
+## Protected Branches
+
+- Do not commit directly to `main` or `dev`.
+- All changes must be committed on a dedicated branch (feature/fix/chore/docs/refactor) that includes the task GUID per the naming rules.
+- Open a PR to merge into `dev` (and then into `main` via release or a subsequent PR). Both `dev` and `main` accept changes via PRs only.
+
 ## PR Description
 
 - Include `task: <GUID>` and a link to the task file in `prj-mgmt/`.
