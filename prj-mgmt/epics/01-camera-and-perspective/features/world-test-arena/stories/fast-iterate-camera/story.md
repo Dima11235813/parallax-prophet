@@ -40,6 +40,7 @@ T-Shirt or points: M
 - [Implement minimal camera mode manager](./tasks/implement-camera-mode-manager.md)
 - [Wire toggle input in Test Arena](./tasks/wire-toggle-input.md)
 - [Author QA checklist for camera modes](./tasks/author-qa-checklist.md)
+- [Add HUD placeholder and camera mode UI](./tasks/add-hud-placeholder-and-camera-ui.md)
 
 ## Bugs (links)
 
