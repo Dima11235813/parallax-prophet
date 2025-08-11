@@ -449,25 +449,6 @@ Each epic decomposes into features/stories/tasks under `/prj-mgmt` with links ba
 
 ---
 
-## 23) Appendix: Suggested Path Aliases (tsconfig.json)
-
-```json
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@engine/*": ["src/engine/*"],
-      "@game/*": ["src/game/*"],
-      "@app/*": ["src/app/*"],
-      "@shared/*": ["src/shared/*"]
-    }
-  }
-}
-```
-
----
-
 ## 24) Appendix: Minimal Public APIs to Freeze (v0)
 
 - `engine/ecs`: `World`, `Component<T>`, `System`, `query` API

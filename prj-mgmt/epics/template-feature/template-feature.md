@@ -1,4 +1,6 @@
-# Feature Title
+# Template Feature Title (short and descriptive)
+
+NOTE: Use short and descriptive title for file name to replace {template}-feature.md
 
 Owner: TBD
 Status: Planned | In Progress | Done

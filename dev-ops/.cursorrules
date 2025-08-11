@@ -19,6 +19,12 @@ These conventions keep work organized and make it easy to trace commits to tasks
 - Add a footer with the task GUID:
   - `task: <GUID>`
 
+## Protected Branches
+
+- Do not commit directly to `main` or `dev`.
+- All changes must be committed on a dedicated branch (feature/fix/chore/docs/refactor) that includes the task GUID per the naming rules.
+- Open a PR to merge into `dev` (and then into `main` via release or a subsequent PR). Both `dev` and `main` accept changes via PRs only.
+
 ## PR Description
 
 - Include `task: <GUID>` and a link to the task file in `prj-mgmt/`.
@@ -31,6 +37,50 @@ These conventions keep work organized and make it easy to trace commits to tasks
   - Example:
     - From: `tasks/add-baseline-packages.md`
     - To: `tasks/done-add-baseline-packages-6f2a5d9b-9c24-4d67-8b7e-2a5fcd1ab4e3.md`
+
+## Architecture (Domain-Driven)
+
+- Maintain a `src/domain/` folder for core domain logic. This code is framework-agnostic and testable.
+  - `src/domain/entities/`: entity types and data shapes only. No side effects.
+  - `src/domain/helpers/`: pure functions operating on entities. No I/O, no timers, no DOM, no rendering.
+- Infrastructure and adapters live outside the domain, e.g., `src/infra/` for rendering, persistence, IO, etc.
+  - Keep rendering-specific Three.js code under `src/infra/three/`.
+- UI / app shell (`src/main.ts`, components) orchestrates domain and infra. It contains wiring, not business rules.
+- New logic should prefer pure functions in domain; pass data in, return data out. Avoid singletons and shared mutable state.
+- Unit tests must target domain helpers and entities first; integration tests cover infra and wiring.
+
+### CRITICAL: HUD and View-Model Rules
+
+- Treat the HUD as a domain-level concept as complexity grows.
+  - Define HUD state and view-model interfaces under `src/domain/entities/` (types only; no side effects).
+  - Implement pure view-model builders under `src/domain/helpers/` that map domain state to a HUD view model (no DOM, no Three.js, no timers, no I/O).
+  - The UI/app shell receives a `HudViewModel` and renders it. It should not compute HUD logic.
+- Keep `src/main.ts` lean and orchestration-only:
+  - After completing tasks, refactor to extract reusable logic into helpers or appropriate layers (domain for pure logic; infra for rendering/IO; app for composition).
+  - Avoid letting `src/main.ts` grow large; prefer small, named functions and modules.
+- Decouple domain logic and UI via an explicit view-model boundary:
+  - Domain exposes data and pure builders (e.g., `buildHudViewModel(domainState): HudViewModel`).
+  - UI consumes the view model and handles presentation only.
+  - No DOM/renderer references inside domain code.
+
+## Path Aliases
+
+- Use TypeScript and Vite path aliases to keep imports concise and stable (see `dev-ops/arch.md`, Section 23):
+  - `@/*` -> `src/*`
+  - `@engine/*` -> `src/engine/*`
+  - `@game/*` -> `src/game/*`
+  - `@app/*` -> `src/app/*`
+  - `@shared/*` -> `src/shared/*`
+  - `@domain/*` -> `src/domain/*`
+  - `@infra/*` -> `src/infra/*`
+- Configured in `tsconfig.json` (`compilerOptions.paths`) and `vite.config.ts` (`resolve.alias`).
+
+## Test Path Conventions
+
+- Prefer colocated tests next to the file under test using `*.test.ts` or `*.spec.ts` (e.g., `src/domain/helpers/markers.ts` and `src/domain/helpers/markers.test.ts`).
+- Unit tests: colocated in `src/**/?(*.){test,spec}.ts`.
+- Integration tests: either colocated or under `tests/integration/**/*.{test,spec}.ts`.
+- End-to-end tests: Playwright in `e2e/` (configured via `playwright.config.ts`).
 
 ## References
 

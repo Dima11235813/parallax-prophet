@@ -35,6 +35,7 @@ Status: Planned
 
 - [Build alignment test arena](./stories/build-alignment-test-arena/story.md)
 - [Define anchor sockets & targets](./stories/anchor-socket-targets/story.md)
+- [Fast iteration on camera modes](./stories/fast-iterate-camera/story.md)
 
 ## References
 

@@ -1,13 +1,20 @@
-# Template Task
+# Template(Short descriptive title) Task
 
+Use short descriptive title for file name, e.g. `implement-authentication-abc123-task.md`.
+
+```yaml
 Date: YYYY-MM-DD
 Status: Todo | In Progress | Blocked | In Review | Done
+Start: YYYY-MM-DD-HHMMSS
+Paused: YYYY-MM-DD-HHMMSS
+End: YYYY-MM-DD-HHMMSS
 Assignee: TBD
 Related Story: ../story.md (or link)
 Estimate: TBD
 Priority: P1 | P2 | P3
 GUID: TBD
 Branch: feature/<short-slug>-<GUID>
+```
 
 ## Description
 
