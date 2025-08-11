@@ -1,13 +1,15 @@
 # Author flat 3D room with markers
 
-Date: YYYY-MM-DD
-Status: Todo
+```yaml
+Date: 2025-08-10
+Status: Done
 Assignee: TBD
 Related Story: ../story.md
 Estimate: TBD
 Priority: P2
-GUID: TBD
-Branch: feature/world/test-arena-room-<GUID>
+GUID: 9e34b28e-4eaa-4fea-9b63-ce5425beae19
+Branch: feature/world/test-arena-room-9e34b28e-4eaa-4fea-9b63-ce5425beae19
+```
 
 ## Description
 
@@ -16,9 +18,9 @@ Branch: feature/world/test-arena-room-<GUID>
 
 ## Checklist
 
-- [ ] Ground and walls added
-- [ ] Markers placed and labeled
-- [ ] Scene load entry configured
+- [x] Ground and walls added
+- [x] Markers placed and labeled
+- [x] Scene load entry configured
 
 ## Git Linking
 

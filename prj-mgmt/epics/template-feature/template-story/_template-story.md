@@ -1,4 +1,8 @@
-# Story Title
+# Story Title (short and descriptive)
+
+NOTE: Use title for file name to replace {template}-story.md
+
+```yaml
 
 Role: Player | Designer | Engineer | QA | Other
 
@@ -40,3 +44,4 @@ T-Shirt or points: TBD
 ## Bugs (links)
 
 // Link discovered issues here
+```
